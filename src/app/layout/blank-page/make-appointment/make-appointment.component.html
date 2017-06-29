@@ -1,0 +1,139 @@
+<div class="col-xl-8">
+    <div class="card  ">
+        <h2 class="card-header ">
+            Doctor: {{thisDoctor.doc_name }}
+        </h2>
+        <div class="card-block ">
+            Doctor ID:  {{thisDoctor.doc_id}},  Age:  {{thisDoctor.doc_age}}<br>
+            Contact NO:  {{thisDoctor.contact_number}},  Speciality:  {{thisDoctor.speciality}}
+            <!-- <button class="btn btn-success" (click)="seeThisDoctor(doctor)">More Info</button>-->
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+    <div class="card mb-3">
+        <h4 class="card-header">Step 1. Pick Your Date And Click Confirm</h4>
+        <div class="card-block">
+            <form class="form-inline mb-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" required placeholder="yyyy-mm-dd"
+                               name="dp" [(ngModel)]="model" ngModel ngbDatepicker #d="ngbDatepicker">
+                        <div class="input-group-addon" (click)="d.toggle()" >
+                            <span class="fa fa-calendar"></span>
+                        </div>
+                        <button class="btn btn-success" [disabled]="!model" (click)="showAvailableSchedule()">Confirm</button>
+                    </div>
+                </div>
+            </form>
+            <div class="alert alert-info mb-0">
+                <strong>Date Chosen: </strong> {{model| date}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <div class="card mb-3">
+        <h4 class="card-header">Step 2. Choose Your Appointment Start Time</h4>
+        <div class="card-block">
+            <select class="form-control" name="selectedtime" ngModel placeholder="HH:mm"  [(ngModel)]="appointmenttime" required #selectedtime="ngModel">
+                <option *ngFor="let time of schedule">{{time.start_time}}</option>
+            </select>
+<!--            <select class="form-control" name="selectedtime2" ngModel required #selectedtime2="ngModel">
+                <option *ngFor="let time2 of schedule">{{time2.toString()}}</option>
+            </select>-->
+            <div class="alert alert-warning mb-0">
+                <strong>Alert: </strong> all appointment sessions are 30 mins long max.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <div class="card mb-3">
+        <h4 class="card-header">Step 3. Make Your Appointment</h4>
+        <div class="card-block">
+            <button class="btn btn-primary" [disabled]="!selectedtime.value" (click)="open(content)">Make Your Appointment</button>
+            <div id="confirmModal">
+                <ng-template  #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Please Confirm </h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                   <div class="modal-body">
+                        <p>Are you sure you want to make this appointment?</p>
+                        Appointment Date: {{convertedDate}}, Appointment Start Time: {{appointmenttime}}.
+                       <div class="alert alert-warning">
+                           <strong>Alert: </strong> all appointment sessions are 30 mins long max.
+                       </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" (click)="makeAppointment(selectedtime.value)">Confirm</button>
+                        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<button class="btn btn-warning" [routerLink]="['/search/searchresult']">Go Back</button>
+
+<!--<div class="col-sm-6">
+<form role="form">
+    <div class="form-group">
+        <h3>Choose your appointment period</h3>
+        <select class="form-control" required #selectedtime>
+            <option *ngFor="let time of schedule">{{time.start_time}}</option>
+        </select>
+
+    </div>
+    <button class="btn btn-primary" (click)="open(content)">Make Your Appointment</button>
+    <div id="confirmModal">
+    <ng-template  #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">Appointment Confirmation</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to make this appointment?</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="makeAppointment(selectedtime.value)">Confirm</button>
+            <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+        </div>
+    </ng-template>
+    </div>
+</form>
+
+</div>-->
+<!--<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label class="form-control-label col-sm-2">Comments:</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button"  data-dismiss="myModal" class="btn btn-default">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->

@@ -1,0 +1,81 @@
+<div  class="login-page">
+    <div class="row">
+        <div class="col-md-4 push-md-4">
+            <img class="user-avatar" src="assets/images/hospital_logo2.jpg" width="150px" />
+            <h1>Regeister Now</h1>
+            <div class="alert alert-warning" *ngIf="regeisterfail"><h5>Register Failed! Something Wrong Happened</h5></div>
+            <div class="alert alert-success" *ngIf="regeistersuccess"><h5>Register Success! You Can Now Login With Your Email</h5></div>
+            <form role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input  type="text" ngModel name="name" required pattern="[a-zA-Z ]{1,}" class="form-control input-underline input-lg" id="name" placeholder="Name" #name="ngModel">
+                        <div class="alert alert-warning" *ngIf="!name.valid &&name.touched">Name can't be empty and must be valid</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" ngModel required class="form-control input-underline input-lg" id="email" placeholder="Email" #email="ngModel">
+                        <div class="alert alert-warning" *ngIf="!email.valid &&email.touched">Email can't be empty and must be valid</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="age" ngModel pattern="[0-9]{1,3}" class="form-control input-underline input-lg"  required  id="age" placeholder="Age" #age="ngModel">
+                        <div class="alert alert-warning" *ngIf="!age.valid &&age.touched">Age can't be empty and must be valid</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="patient_password" ngModel class="form-control input-underline input-lg"  required  id="password" placeholder="Password" #patient_password="ngModel">
+                        <div class="alert alert-warning" *ngIf="!patient_password.valid &&patient_password.touched">Password can't be empty</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="repassword" ngModel class="form-control input-underline input-lg" required id="repassword" placeholder="Repeat Password" #repassword="ngModel">
+                        <div class="alert alert-warning" *ngIf="!repassword.valid &&repassword.touched || repassword.value!=patient_password.value">Password not match</div>
+                    </div>
+                </div>
+         <!--       <a class="btn rounded-btn" [routerLink]="['/dashboard']"> Register </a>&nbsp;-->
+<!--                <a class="btn rounded-btn" (click)="register(name.value,age.value,email.value,patient_password.value)" >Test Real Register </a>-->
+                <button class="btn rounded-btn" [disabled]="!name.value||!email.value||!age.value||!patient_password.value||!repassword.value"
+                        (click)="register(name.value,age.value,email.value,patient_password.value)" > Register </button>&nbsp;
+                <a class="btn rounded-btn" [routerLink]="['/login']"> Log in </a>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="text-center" style="color: #FFFFFF">
+        <p>
+            <a href="#" target="_top" style="color: #FFFFFF">DeadMan Hospital@All Rights Deserved</a>
+
+        </p>
+        <p>
+            <a href="#" target="_top" style="color: #FFFFFF">Created By Michael</a>
+        </p>
+    </div>
+
+
+
+    <!--<div class="col-md-6 col-md-offset-3">
+        <h2>Register</h2>
+        <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patient_email.valid }">
+                <label for="patient_name">Name</label>
+                <input type="text" class="form-control" id="patient_name" [(ngModel)]="patient.patient_name" #patient_name="ngModel" required />
+                <div *ngIf="f.submitted && !patient_name.valid" class="help-block">Name is required</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patient_email.valid }">
+                <label for="patient_age">Age</label>
+                <input type="text" class="form-control" pattern="[0-9]{1,3}" id="patient_age" [(ngModel)]="patient.patient_age" #patient_age="ngModel" required />
+                <div *ngIf="f.submitted && !patient_age.valid" class="help-block">Age is required</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patient_email.valid }">
+                <label for="username">Email</label>
+                <input type="email" class="form-control" id="username" [(ngModel)]="patient.patient_email" #patient_email="ngModel" required />
+                <div *ngIf="f.submitted && !patient_email.valid" class="help-block">Email is required</div>
+            </div>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !patient_password.valid }">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="patient.password" #patient_password="ngModel" required />
+                <div *ngIf="f.submitted && !patient_password.valid" class="help-block">Password is required</div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Register</button>
+                <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>-->
+</div>

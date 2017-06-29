@@ -1,0 +1,101 @@
+<!--
+
+<div class="panel panel-default" *ngFor="let doctor of doctors">
+    <div class="panel-heading">
+        &lt;!&ndash;<a routerLink="['appoinment',data]">&ndash;&gt;
+        <h3 class="panel-title">Doctor Id:{{doctor.doc_id}},{{doctor.doc_name }}</h3>
+        &lt;!&ndash;</a>&ndash;&gt;
+    </div>
+    <div class="panel-body">
+        {{doctor.doc_age}},{{doctor.contact_number}},{{doctor.speciality}}
+    </div>
+&lt;!&ndash;    <button (click)="OnSubmitData(data)">Click me</button>&ndash;&gt;
+</div>
+-->
+<br>
+<!--<div class="col-xl-8">
+<div class="card card-info card-inverse" *ngFor="let doctor of doctors">
+    <h2 class="card-header card-info">
+        {{doctor.doc_name }}
+    </h2>
+    <div class="card-block bg-white">
+        Doctor ID:  {{doctor.doc_id}},  Age:  {{doctor.doc_age}}<br>
+        Contact NO:  {{doctor.contact_number}},  Speciality:  {{doctor.speciality}}
+        <button class="btn btn-success" (click)="seeThisDoctor(doctor)">More Info</button>
+    </div>
+</div>
+</div>-->
+
+
+
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card  " *ngFor="let doctor of doctors">
+            <h2 class="card-header "> {{doctor.doc_name }}</h2>
+            <div class="card-block ">
+                <p>
+                    Doctor ID:  {{doctor.doc_id}},  Age:  {{doctor.doc_age}}<br>
+                    Contact NO:  {{doctor.contact_number}},  Speciality:  {{doctor.speciality}}
+                    <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                        More Info
+                    </button>
+                </p>
+                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                        <div class="card-header ">Work Schedule In A Week</div>
+                        <div class="card-block ">
+                            <table class="table table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Weekday</th>
+                                    <th>Starting Hour</th>
+                                    <th>Ending Hour</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let day of doctor.weekday">
+                                    <td>{{day.weekday}}</td>
+                                    <td>{{day.start}}</td>
+                                    <td>{{day.end}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-success" (click)="goToMakeAppointment(doctor)">GO TO MAKE AN APPOINTMENT!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-warning" [routerLink]="['/search/searchdoc']">Go Back</button>
+    </div>
+</div>
+
+
+
+<!--
+<div class="col-xl-8">
+    <div class="card-header">Work Schedule In A Week</div>
+    <div class="card-block table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th>Weekday</th>
+                <th>Starting Hour</th>
+                <th>Ending Hour</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let day of thisDoctor.weekday">
+                <td>{{day.weekday}}</td>
+                <td>{{day.start}}</td>
+                <td>{{day.end}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<button class="btn btn-success" (click)="goToMakeAppointment()">GO TO MAKE AN APPOINTMENT!</button>
+-->
