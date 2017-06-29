@@ -6,7 +6,7 @@ export class Patient {
     private _patient_name: string;
     private _password: string;
     private _patient_age: number;
-   private _patientEmail: string;
+   private _patient_email: string;
 
     get patient_id(): string {
         return this._patient_id;
@@ -40,12 +40,12 @@ export class Patient {
         this._patient_age = value;
     }
 
-    get patientEmail(): string {
-        return this._patientEmail;
+    get patient_email(): string {
+        return this._patient_email;
     }
 
-    set patientEmail(value: string) {
-        this._patientEmail = value;
+    set patient_email(value: string) {
+        this._patient_email = value;
     }
 
     constructor() {

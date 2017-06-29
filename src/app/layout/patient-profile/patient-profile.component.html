@@ -1,4 +1,30 @@
-<p>
-  patient-profile works!
-</p>
-<h1>This is not a dead page !</h1>
+<app-page-header [heading]="'Patient Profile'" [icon]="'fa-edit'"></app-page-header>
+<div class="col-xl-8">
+    <div class="card  " >
+        <h2 class="card-header "> <i class="fa fa-fw fa-user"></i>Patient:{{currentPatient.patient_name}} </h2>
+                <div class="card-block table-responsive">
+                    <p><i class="fa fa-fw fa-sliders"></i>Basic Info</p>
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <th scope="row"><i class="fa fa-fw fa-address-book-o"></i>Name</th>
+                            <td>{{currentPatient.patient_name}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="fa fa-fw fa-address-card-o"></i>Registered ID</th>
+                            <td>{{currentPatient.patient_id}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="fa fa-fw fa-calendar"></i>Age</th>
+                            <td>{{currentPatient.patient_age}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="fa fa-fw fa-envelope"></i>Contact Email</th>
+                            <td>{{currentPatient.patientEmail}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+    </div>
+    <br>
+</div>

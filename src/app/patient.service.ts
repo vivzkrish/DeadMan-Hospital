@@ -17,10 +17,18 @@ constructor(private  http: Http) { }
                 res.json()
         );
     }
-    getByEmail(email: string) {
-        return this.http.get('http://localhost:9080/patient/email' + email).map(
+    getByEmail(postdata) {
+        let headers = new Headers({ 'Content-Type': 'application/json'});
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('http://localhost:9080/patient/email', JSON.stringify(postdata), options).map(
             (res: Response) =>
                 res.json()
+        ) .catch(
+            (error: Response) =>
+            {
+                console.log('Somthing went wrong with the request');
+                return Observable.throw(error);
+            }
         );
     }
     selectDoctorByID(id: string) {

@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 import {PatientComponent} from './patient/patient.component';
-import {PatientProfileComponent} from "./patient-profile/patient-profile.component";
+import {PatientProfileComponent} from './patient-profile/patient-profile.component';
 import {TestComponent} from './test/test.component'
 const routes: Routes = [
     {
         path: '', component: LayoutComponent,
         children: [
-            { path: 'patient-profile', component: PatientProfileComponent },
+            { path: 'patient-profile', loadChildren: './patient-profile/patient-profile.module#PatientProfileModule' },
             { path: 'test', component: TestComponent },
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },

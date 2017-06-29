@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent, SidebarComponent } from '../shared';
-import { PatientProfileComponent } from './patient-profile/patient-profile.component';
 import { TestComponent } from './test/test.component';
 import { PatientComponent } from './patient/patient.component';
 
@@ -21,7 +20,6 @@ import { PatientComponent } from './patient/patient.component';
         LayoutComponent,
         HeaderComponent,
         SidebarComponent,
-        PatientProfileComponent,
         TestComponent,
         PatientComponent,
     ]

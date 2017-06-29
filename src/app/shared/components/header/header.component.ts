@@ -12,6 +12,7 @@ import {Patient} from '../../../models/patient-model';
 export class HeaderComponent implements OnInit {
     patient: Patient;
     constructor(private patientservice: PatientService, private translate: TranslateService, public router: Router) {
+        this.patient = this.patientservice.currentPatient;
         this.router.events.subscribe((val) => {
             if (val instanceof NavigationEnd && window.innerWidth <= 992) {
                 this.toggleSidebar();
@@ -19,7 +20,10 @@ export class HeaderComponent implements OnInit {
         });
     }
 
-    ngOnInit() {this.patient = this.patientservice.currentPatient; }
+    ngOnInit() {this.patient = this.patientservice.currentPatient;
+    console.log('this is from header');
+    console.log(this.patient);
+    }
 
     toggleSidebar() {
         const dom: any = document.querySelector('body');

@@ -9,7 +9,9 @@ import {Patient} from '../../models/patient-model';
 })
 export class PatientProfileComponent implements OnInit {
     currentPatient: Patient;
-  constructor(private patientservice: PatientService) { }
+  constructor(private patientservice: PatientService) {
+      this.currentPatient = this.patientservice.currentPatient;
+  }
 
   ngOnInit() {
       this.currentPatient = this.patientservice.currentPatient;

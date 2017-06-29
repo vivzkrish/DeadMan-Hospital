@@ -13,8 +13,10 @@ import {PatientService} from '../patient.service';
 export class LoginComponent implements OnInit {
     result: boolean;
     login_data: {patient_id: string, password: string};
+    postdata: {patientEmail: string};
 
-    constructor(private patientservice: PatientService, private alertservice: AlertService, public router: Router, private  loginservice: LoginServiceService) { }
+    constructor(private patientservice: PatientService, private alertservice: AlertService,
+     public router: Router, private  loginservice: LoginServiceService) { }
 
     ngOnInit() { }
 
@@ -38,10 +40,10 @@ export class LoginComponent implements OnInit {
              /*   this.router.navigate(['/login']);*/
                 console.log(error);
             });
-        console.log(this.result);
     }
     storeCurrentPatient() {
-        this.patientservice.getById(this.login_data.patient_id).subscribe(
+        this.postdata = {patientEmail: this.login_data.patient_id};
+        this.patientservice.getByEmail(this.postdata).subscribe(
             data => {
                 this.patientservice.currentPatient = data;
                 console.log(this.patientservice.currentPatient);
